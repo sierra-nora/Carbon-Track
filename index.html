@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CarbonTrack - a student-friendly personal carbon footprint calculator." />
+  <title>CarbonTrack — Personal Carbon Footprint</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="site-header">
+    <a href="#home" class="brand" data-nav="home">
+      <span class="brand-mark">C</span>
+      <span>Carbon<span>Track</span></span>
+    </a>
+    <nav>
+      <a href="#home" data-nav="home">Home</a>
+      <a href="#how" data-nav="how">How it works</a>
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">◐</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="screen active">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="pulse"></span> Built for everyday student life</div>
+          <h1>See the impact<br><em>behind your habits.</em></h1>
+          <p class="hero-text">
+            Estimate your monthly carbon footprint across food, transport, electricity, waste and everyday consumption — then discover what you can change.
+          </p>
+          <div class="hero-actions">
+            <button class="primary-btn" id="startBtn">Calculate my footprint <span>→</span></button>
+            <button class="text-btn" id="howBtn">How does it work?</button>
+          </div>
+          <div class="micro-stats">
+            <div><strong>5</strong><span>lifestyle areas</span></div>
+            <div><strong>3 min</strong><span>typical completion</span></div>
+            <div><strong>CO₂e</strong><span>common measurement</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="orbit-card orbit-main">
+            <div class="mini-label">YOUR FOOTPRINT</div>
+            <div class="orbit-number">142<span>kg</span></div>
+            <div class="orbit-sub">CO₂e / month</div>
+            <div class="mini-bars">
+              <span style="width:72%"></span><span style="width:48%"></span><span style="width:38%"></span><span style="width:23%"></span>
+            </div>
+          </div>
+          <div class="floating-card category-card"><span>🚗</span><div><small>Largest area</small><strong>Transport</strong></div><b>43%</b></div>
+          <div class="floating-card tip-card"><span class="tip-icon">✦</span><div><small>Next best action</small><strong>Share 2 rides/week</strong></div></div>
+        </div>
+      </div>
+
+      <div id="how" class="how-strip">
+        <div class="section-heading"><span>THE FLOW</span><h2>Measure → Identify → Act → Improve</h2></div>
+        <div class="flow-grid">
+          <article><span>01</span><h3>Measure</h3><p>Answer simple questions about your routine.</p></article>
+          <article><span>02</span><h3>Identify</h3><p>See which part of your lifestyle contributes most.</p></article>
+          <article><span>03</span><h3>Act</h3><p>Get practical suggestions tailored to your result.</p></article>
+          <article><span>04</span><h3>Improve</h3><p>Try “what if?” changes and compare the impact.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="calculator" class="screen app-screen">
+      <div class="calculator-shell">
+        <div class="calc-top">
+          <button class="back-btn" id="backBtn">← Back</button>
+          <div class="progress-wrap">
+            <div class="progress-meta"><span id="stepLabel">Food & drink</span><span id="stepCount">1 / 5</span></div>
+            <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+          </div>
+        </div>
+
+        <div class="question-card" id="questionCard">
+          <div class="question-icon" id="questionIcon">🍽️</div>
+          <div class="question-copy">
+            <div class="section-kicker" id="questionKicker">CATEGORY 01</div>
+            <h2 id="questionTitle">Food & drink</h2>
+            <p id="questionDesc">Tell us about your usual food habits. Estimates are designed to be simple, not judgmental.</p>
+          </div>
+          <div class="question-body" id="questionBody"></div>
+        </div>
+
+        <div class="calc-actions">
+          <button class="secondary-btn" id="prevStepBtn">Previous</button>
+          <button class="primary-btn" id="nextStepBtn">Continue <span>→</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="screen">
+      <div class="results-shell">
+        <div class="results-header">
+          <div>
+            <div class="eyebrow"><span class="pulse"></span> Your monthly estimate</div>
+            <h2>Here’s where your<br><em>footprint comes from.</em></h2>
+          </div>
+          <button class="secondary-btn" id="restartTop">Start again</button>
+        </div>
+
+        <div class="result-hero">
+          <div class="score-card">
+            <div class="score-label">ESTIMATED TOTAL</div>
+            <div class="score-value"><span id="totalFootprint">0</span><small>kg CO₂e</small></div>
+            <div class="score-period">per month</div>
+            <div class="score-note" id="scoreNote">Based on the lifestyle information you entered.</div>
+          </div>
+          <div class="biggest-card">
+            <div class="mini-label">BIGGEST CONTRIBUTOR</div>
+            <div class="biggest-icon" id="biggestIcon">🚗</div>
+            <h3 id="biggestName">Transportation</h3>
+            <div class="biggest-number"><span id="biggestAmount">0</span> kg</div>
+            <p id="biggestText">This category is your largest estimated source of emissions.</p>
+          </div>
+        </div>
+
+        <div class="breakdown-section">
+          <div class="section-heading"><span>BREAKDOWN</span><h2>What makes up your footprint?</h2></div>
+          <div class="breakdown-grid">
+            <div class="chart-card"><canvas id="donutChart" width="320" height="320"></canvas><div class="chart-center"><strong id="chartCenter">0</strong><span>kg CO₂e</span></div></div>
+            <div class="bars-card" id="breakdownBars"></div>
+          </div>
+        </div>
+
+        <div class="recommendation-section">
+          <div class="section-heading"><span>YOUR NEXT MOVE</span><h2 id="recTitle">Start with your biggest contributor.</h2></div>
+          <div class="rec-layout">
+            <div class="rec-main" id="recMain"></div>
+            <div class="rec-side">
+              <div class="tiny-card"><span>01</span><strong id="recSmall1">Make one change</strong><p id="recSmallText1">Pick an action that feels realistic this week.</p></div>
+              <div class="tiny-card">
+    <span>02</span>
+    <strong id="recSmall2">Second recommendation</strong>
+    <p id="recSmallText2">Your second recommended action will appear here.</p>
+</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="whatif-section">
+          <div class="section-heading"><span>WHAT IF?</span><h2>Experiment with your habits.</h2><p>See an example of how a single change could affect your estimate.</p></div>
+          <div class="whatif-grid" id="whatIfGrid"></div>
+          <div class="whatif-total"><span>Illustrative footprint after selected change</span><strong><span id="whatIfTotal">0</span> kg CO₂e</strong></div>
+        </div>
+
+        <div class="final-cta">
+          <div><span class="eyebrow">KEEP GOING</span><h2>Your footprint is a starting point, not a verdict.</h2><p>Small, repeatable changes are easier to maintain than trying to change everything at once.</p></div>
+          <button class="primary-btn" id="restartBottom">Recalculate <span>↻</span></button>
+        </div>
+
+        <footer class="site-footer">
+          <span>CarbonTrack • Student carbon footprint calculator</span>
+          <span>Estimates are educational and depend on the emission factors used.</span>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/emissions.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
